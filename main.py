@@ -4,7 +4,7 @@ import streamlit as st
 import cv2
 import numpy as np
 # Khởi tạo mô hình YOLO
-model = YOLO("./train7/weights/best.pt")
+model = YOLO("./best.pt")
 
 st.header("20110467 - Trần Ngọc Hải")
 st.header("20110479 - Nguyễn Trung Hiếu")
