@@ -15,7 +15,7 @@ uploaded_file = st.file_uploader("Chọn ảnh", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     # Đọc ảnh và chuyển đổi sang định dạng phù hợp để dự đoán
     image = cv2.imdecode(np.frombuffer(uploaded_file.read(), np.uint8), 1)
-    image = cv2.resize(image, (800, 800))
+    image = cv2.resize(image, (640, 640))
     # Dự đoán các đối tượng có trong ảnh
     results = model(source=image)
 
