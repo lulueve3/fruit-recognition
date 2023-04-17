@@ -9,13 +9,15 @@ model = YOLO("./best.pt")
 st.header("20110467 - Trần Ngọc Hải")
 st.header("20110479 - Nguyễn Trung Hiếu")
 
+st.header("['apple', 'banana', 'carrot', 'corn', 'cucumber']")
+
 
 uploaded_file = st.file_uploader("Chọn ảnh", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Đọc ảnh và chuyển đổi sang định dạng phù hợp để dự đoán
     image = cv2.imdecode(np.frombuffer(uploaded_file.read(), np.uint8), 1)
-    image = cv2.resize(image, (640, 640))
+    image = cv2.resize(image, (800, 800))
     # Dự đoán các đối tượng có trong ảnh
     results = model(source=image)
 
@@ -24,6 +26,6 @@ if uploaded_file is not None:
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Hiển thị ảnh và kết quả dự đoán
-    st.image(image, caption="Ảnh đã chọn")
-    st.image(image_result, caption="Kết quả dự đoán")
+    st.image(cv2.resize(image, (500,500)), caption="Ảnh đã chọn")
+    st.image(cv2.resize(image_result, (500,500)), caption="Kết quả dự đoán")
     
