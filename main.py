@@ -9,7 +9,7 @@ model = YOLO("./best.pt")
 st.header("20110467 - Trần Ngọc Hải")
 st.header("20110479 - Nguyễn Trung Hiếu")
 
-st.header("['apple', 'banana', 'carrot', 'corn', 'cucumber']")
+st.header("['apple', 'banana', 'bell_pepper', 'carrot', 'chilli_pepper', 'corn', 'cucumber', 'eggplant', 'mango', 'orange', 'pineapple', 'potato', 'sweetpotato', 'tomato', 'watermelon']")
 
 
 uploaded_file = st.file_uploader("Chọn ảnh", type=["jpg", "jpeg", "png"])
