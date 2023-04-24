@@ -21,11 +21,27 @@ if uploaded_file is not None:
     # Dự đoán các đối tượng có trong ảnh
     results = model(source=image)
 
+    
+    for result in results:
+        boxes = result.boxes  # Boxes object for bbox outputs
+        masks = result.masks  # Masks object for segmentation masks outputs
+        probs = result.probs  # Class probabilities for classification outputs
+
+    # In ra số lượng hộp giới hạn được dự đoán
+
     #Chuyển về đúng hệ màu
     image_result = cv2.cvtColor(results[0].plot(), cv2.COLOR_BGR2RGB)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Hiển thị ảnh và kết quả dự đoán
-    st.image(cv2.resize(image, (500,500)), caption="Ảnh đã chọn")
-    st.image(cv2.resize(image_result, (500,500)), caption="Kết quả dự đoán")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.image(cv2.resize(image, (500,500)), caption="Ảnh đã chọn")
+
+    with col2:
+        st.image(cv2.resize(image_result, (500,500)), caption="Kết quả dự đoán")
+    
+    num_boxes = len(boxes)
+    st.write("Số lượng quả: ", num_boxes)
     
