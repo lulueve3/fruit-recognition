@@ -44,4 +44,7 @@ if uploaded_file is not None:
     
     num_boxes = len(boxes)
     st.write("Số lượng quả: ", num_boxes)
-    
+    # Xuất ra tọa độ của từng hộp giới hạn được dự đoán
+    for box in result.boxes.xyxy:
+        x1, y1, x2, y2 = box.tolist()
+        st.write("Tọa độ hộp giới hạn:", (x1, y1), (x2, y2))
