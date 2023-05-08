@@ -25,10 +25,7 @@ if uploaded_file is not None:
     
     for result in results:
         boxes = result.boxes  # Boxes object for bbox outputs
-        masks = result.masks  # Masks object for segmentation masks outputs
-        probs = result.probs  # Class probabilities for classification outputs
 
-    # In ra số lượng hộp giới hạn được dự đoán
 
     #Chuyển về đúng hệ màu
     image_result = cv2.cvtColor(results[0].plot(), cv2.COLOR_BGR2RGB)
