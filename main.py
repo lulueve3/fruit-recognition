@@ -9,10 +9,11 @@ model = YOLO("./best.pt")
 st.header("20110467 - Trần Ngọc Hải")
 st.header("20110479 - Nguyễn Trung Hiếu")
 
-st.header("['apple', 'banana', 'bell_pepper', 'carrot', 'chilli_pepper', 'corn', 'cucumber', 'eggplant', 'mango', 'orange', 'pineapple', 'potato', 'sweetpotato', 'tomato', 'watermelon']")
+st.header("[apple, banana, mango, orange, papaya, pineapple, tomato]")
 
 
 uploaded_file = st.file_uploader("Chọn ảnh", type=["jpg", "jpeg", "png"])
+
 
 if uploaded_file is not None:
     # Đọc ảnh và chuyển đổi sang định dạng phù hợp để dự đoán
@@ -43,8 +44,5 @@ if uploaded_file is not None:
         st.image(cv2.resize(image_result, (500,500)), caption="Kết quả dự đoán")
     
     num_boxes = len(boxes)
-    st.write("Số lượng quả: ", num_boxes)
-    # Xuất ra tọa độ của từng hộp giới hạn được dự đoán
-    for box in result.boxes.xyxy:
-        x1, y1, x2, y2 = box.tolist()
-        st.write("Tọa độ hộp giới hạn:", (x1, y1), (x2, y2))
+    st.header("Số lượng quả: " + str(num_boxes))
+
